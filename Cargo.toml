@@ -1,0 +1,20 @@
+[package]
+name = "holdem_peek"
+version = "0.1.0"
+edition = "2021"
+description = "Heads-up fixed-limit Texas Hold'em against a bot, with optional X-ray peeks"
+
+[dependencies]
+# Audio is switched off so Linux builds don't need the ALSA dev package.
+macroquad = { version = "0.4", default-features = false }
+egui-macroquad = { version = "0.17", default-features = false }
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+opt-level = 3
+lto = "thin"
